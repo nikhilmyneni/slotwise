@@ -1,0 +1,168 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@source "../index.html";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Achromatic ledger, light and dark. Chrome is ink and grey; the one chart hue
+  marks the proposal, the legacy comparison is grey, and green/red appear only as
+  small change signals. Every colour used by components is a variable here, so the
+  theme switch (html.dark) re-colours the whole app.
+  Canvas: centred column max 1200px; one 16px gap; radii 8 (cards) / 6 (controls).
+*/
+:root {
+  color-scheme: light;
+  --bg: #f2f4f7;
+  --surface: #ffffff;
+  --surface-2: #f5f6f8;
+  --border: #e3e6ea;
+  --border-strong: #d0d4da;
+  --rule: #eef0f3;
+  --fg: #0a0a0a;
+  --fg-muted: #4a4f57;
+  --fg-subtle: #6b7079;
+  --ink: #141414;
+  --ink-hover: #2c2c2c;
+  --on-ink: #ffffff;
+  --seg: #e6e9ed;
+  --seg-hover: #dbdfe5;
+  --sel: #eef2f8;
+  --hue: #1d5fbf;
+  --hue-strong: #174c99;
+  --base-line: #a3a8b0;
+  --good: #2e7d32;
+  --good-soft: #dcfae5;
+  --good-ink: #04250e;
+  --bad: #c4242a;
+  --bad-soft: #ffedea;
+  --bad-ink: #831c1e;
+  --warn: #92400e;
+  --warn-soft: #fff7e0;
+  --warn-line: #fde68a;
+  --info: #173f80;
+  --info-soft: #e8eefa;
+  --neutral-soft: #eceef1;
+  --neutral-ink: #3d3d3d;
+  --band-peak: #fbf3e2;
+  --band-hold: #eaf0f9;
+  --rack: #dfe3e8;
+  --empty: #eef0f3;
+  --cls-a: #1d5fbf;
+  --cls-b: #7ea6dd;
+  --cls-c: #cfdcef;
+  --zone-amb: #c9cfd8;
+  --zone-blk: #8e97a4;
+  --zone-chl: #9cbbe3;
+  --zone-frz: #5f86c2;
+  --zone-haz: #d98b7f;
+  --tip-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --mark-tile: #141414;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0b0d10;
+  --surface: #121519;
+  --surface-2: #171b20;
+  --border: #23282f;
+  --border-strong: #323942;
+  --rule: #1d2228;
+  --fg: #eceef1;
+  --fg-muted: #b6bcc5;
+  --fg-subtle: #8e96a1;
+  --ink: #eceef1;
+  --ink-hover: #ffffff;
+  --on-ink: #0b0d10;
+  --seg: #1d2228;
+  --seg-hover: #262c34;
+  --sel: #18253a;
+  --hue: #5b93ec;
+  --hue-strong: #82adf2;
+  --base-line: #66707c;
+  --good: #4cc38a;
+  --good-soft: #10291c;
+  --good-ink: #8fe0b5;
+  --bad: #ff7a7f;
+  --bad-soft: #341517;
+  --bad-ink: #ffb3b6;
+  --warn: #f2c14e;
+  --warn-soft: #2e2410;
+  --warn-line: #5a4614;
+  --info: #9cc0ff;
+  --info-soft: #15233a;
+  --neutral-soft: #1f242b;
+  --neutral-ink: #c9ced6;
+  --band-peak: #241e12;
+  --band-hold: #142033;
+  --rack: #252b33;
+  --empty: #1a1f25;
+  --cls-a: #6aa1f5;
+  --cls-b: #33639f;
+  --cls-c: #223754;
+  --zone-amb: #4a525e;
+  --zone-blk: #7a8494;
+  --zone-chl: #3d6aa3;
+  --zone-frz: #6b8fd1;
+  --zone-haz: #b0645a;
+  --tip-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  --mark-tile: #2a3039;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-rule: var(--rule);
+  --color-fg: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-subtle: var(--fg-subtle);
+  --color-ink: var(--ink);
+  --color-on-ink: var(--on-ink);
+  --color-seg: var(--seg);
+  --color-sel: var(--sel);
+  --color-hue: var(--hue);
+  --color-accent: var(--hue);
+  --color-accent-strong: var(--hue-strong);
+  --color-accent-soft: var(--neutral-soft);
+  --color-accent-fg: var(--ink);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-good-ink: var(--good-ink);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-bad-ink: var(--bad-ink);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: "Geist", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Consolas, monospace;
+}
+
+html, body { background: var(--bg); color: var(--fg); overflow-x: clip; }
+body { font-family: var(--font-sans); font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--cls-c); color: var(--fg); }
+.tnum, table { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--hue); outline-offset: 2px; border-radius: 6px; }
+button, a, select, input { transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, opacity 160ms ease; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* IDs never wrap inside tables; the table scrolls in its own frame instead */
+table .font-mono { white-space: nowrap; font-size: 13px; }
+
+/* Route replay: the proposal route draws itself from the dock */
+@keyframes draw-route { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+.route-draw { stroke-dasharray: var(--len); animation: draw-route 1.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+.pick-pop { transform-box: fill-box; transform-origin: center; animation: pop-in 260ms ease-out both; }
+/* stale content stays visible while the next file loads */
+.is-stale { opacity: 0.55; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+  .route-draw, .pick-pop { animation: none !important; }
+}

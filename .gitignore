@@ -1,0 +1,17 @@
+out/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+web/dist/
+.vercel
+.taste-skill/
+
+# instructions copied from another project (Project Squad)
+CLAUDE.md
+DESIGN.md
+AGENTS.md
+
+# build artifacts and private reference documents
+*.tsbuildinfo
+*.pdf
